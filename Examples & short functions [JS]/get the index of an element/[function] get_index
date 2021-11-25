@@ -24,7 +24,7 @@ var index = get_index(this, (this).className);
 // or for more control over class-names: 
 var index = get_index(this, (this).classList[0]);
 
-// you could do more processing in the function of your element by performing tests 
+// you could do more processing in the function of your element by performing tests over the var index and using the index it contains when the function has returned one
 // if the value of the var index equals  -1 you should dismiss any processing that involves the use of index as it may results in errors
 
 
