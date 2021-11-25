@@ -1,0 +1,29 @@
+function get_index(element, element_class)
+			{
+					
+				var els = document.getElementsByClassName(element_class); // affect to els the list of the elements with the class(es) contained in element_class
+				
+				// loop on the els list
+				for (var i=0; i <els.length; i++)
+				{
+					if (els[i] == element) // if the current element in els equals the element received as function argument
+						return i; // return the element index
+				}
+				
+				return -1; // no result 
+			
+			}   
+      
+      
+      
+// calling the function :
+// inside a function of the element from wich you want to get the index
+// use alternatively:
+var index = get_index(this, (this).className);
+
+// or for more control over class-names: 
+var index = get_index(this, (this).classList[0]);
+
+// you could do more processing in the function of your element by performing tests 
+// if the value of the var index equals  -1 you should dismiss any processing that involves the use of index as it may results in errors
+
