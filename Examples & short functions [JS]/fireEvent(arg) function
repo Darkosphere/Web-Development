@@ -1,7 +1,7 @@
 /* When dealing with Event and customEvent generation I've found this function to be good practice as you don't need to store your Events as they are fired live 
    + you got all events dispatch at the same place so it's kinda practical and usefull at the same time */
    
-   function fireEvent(arg) {
+   function fireEvent(arg, eventDetail) {
    
       if(arg == 'change')
         el_target.dispatchEvent(new Event('change')); 
@@ -13,6 +13,7 @@
         el_target.dispatchEvent(new customEvent('myCustomEvent', {
           detail: {
             // put the informations you want to send with the event here
+            'someDetails' : eventDetail
           }
         }));
         
@@ -21,19 +22,20 @@
  // How to use :
  fireEvent('change'); // dispatch the 'change' event
  fireEvent('another event'); // dispatch the 'another event' event
- fireEvent('myCustomEvent'); // dispatch the 'myCustomEvent' event
+ fireEvent('myCustomEvent' [, string || number || array || associative_array || object]); // dispatch the 'myCustomEvent' event 
  
  // If you need a bit more versatility from this function like specifying the target element on which you want to dispatch the event you could do it simply like this :
- // 1. Add a 2nd argument to the function (you will use it to pass your target element to the function)
+ // 1. Add a 3rd argument to the function (you will use it to pass your target element to the function)
  // 2. use this argument instead of a fixed target element
  
 // An example would be :
 
-    function fireEvent(arg, arg2) {
+    function fireEvent(arg, arg2 [, eventDetail]) {
          if(arg == 'change')
             arg2.dispatchEvent(new Event('change'));
     }
     
 // now to use the function you need to do it that way :  fireEvent('event name', target_element);
+// or in case of customEvent with data to be transmitted with the event: fireEvent('event name', target_element [, string || number || array || associative_array || object]);
     
  
